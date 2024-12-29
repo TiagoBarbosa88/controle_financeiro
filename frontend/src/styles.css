@@ -3,7 +3,12 @@ html, body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+}
+
+* {
+  text-decoration: none;
+  list-style: none;
 }
 
 .container {
@@ -19,6 +24,10 @@ html, body {
 .footer {
   background-color: #e0f7fa;
   text-align: center;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
 }
 
 app-transaction-balance {
