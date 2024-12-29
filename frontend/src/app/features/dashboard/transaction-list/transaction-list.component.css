@@ -2,3 +2,52 @@
     margin-top: 10px;
     text-align: center;
 }
+
+/* Adicionando fundo apenas ao cabeçalho */
+mat-header-row {
+  background-color: #14287f; 
+  color: white; /* Texto branco */
+  font-weight: bold;
+}
+
+/* Adicionando padding e alinhamento às células do cabeçalho */
+mat-header-cell {
+  padding: 16px;
+  text-align: left;
+}
+
+
+/* Classe para Receita */
+.income {
+  color: green; 
+  line-height: 24px; /* Ajuste o line-height para garantir que o texto fique bem alinhado com o ícone */
+}
+
+/* Ícone de Receita (verde) */
+.income-icon {
+  color: green;
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+
+/* Classe para Despesa (vermelho) */
+.expense {
+  color: rgb(231, 34, 27); 
+  line-height: 24px; 
+}
+
+/* Ícone de Despesa (vermelho) */
+.expense-icon {
+  color: rgb(231, 34, 27);
+  vertical-align: middle; 
+  margin-right: 5px; 
+}
+
+.edit {
+  color: rgb(137, 139, 136);
+  margin-right: 5px;
+}
+  
+.delete {
+  color: rgb(231, 34, 27);
+}

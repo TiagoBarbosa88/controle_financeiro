@@ -8,7 +8,7 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'description', 'value', 'category', 'type', 'date', 'actions'];
+  displayedColumns: string[] = ['description', 'value', 'category', 'type', 'date', 'actions'];
   transactions!: Transaction[]
   categories!: Category[]
 
@@ -17,13 +17,10 @@ export class TransactionListComponent implements OnInit {
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
-      console.log(transactions);
     })
 
     this.transactionService.getCategories().subscribe(categories => {
       this.categories = categories;
-      console.log(categories);
-
     })
   }
 
