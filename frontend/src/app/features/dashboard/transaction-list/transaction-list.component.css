@@ -3,19 +3,27 @@
     text-align: center;
 }
 
-/* Adicionando fundo apenas ao cabeçalho */
-mat-header-row {
-  background-color: #14287f; 
-  color: white; /* Texto branco */
-  font-weight: bold;
+table {
+  border-collapse: collapse; /* Garante bordas colapsadas na tabela inteira */
+  border: 1px solid black;
 }
 
-/* Adicionando padding e alinhamento às células do cabeçalho */
-mat-header-cell {
-  padding: 16px;
-  text-align: left;
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
+tfoot th, tfoot td {
+  border-top: 1px solid black; /* Linha no topo do rodapé */
+  font-weight: bold; /* Deixe o texto em negrito (opcional) */
+  background-color: #f9f9f9; /* Fundo claro para destacar o rodapé (opcional) */
+}
+
+
+.mat-mdc-header-row {
+  background-color: #304090;
+  color: antiquewhite;
+}
 
 /* Classe para Receita */
 .income {

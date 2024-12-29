@@ -30,4 +30,9 @@ export class TransactionListComponent implements OnInit {
     return category ? category.name : 'Desconhecido';
   }
 
+
+  getTotalValue(): number {
+    return this.transactions.reduce((total, transaction) => total + transaction.value, 0);
+  }
+
 }  
