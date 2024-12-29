@@ -4,16 +4,16 @@
       "id": 1,
       "description": "Salário",
       "value": 5000,
-      "type": "income",
-      "category": "Trabalho",
+      "type": "receita",
+      "categoryId": 1,
       "date": "2024-12-01"
     },
     {
       "id": 2,
       "description": "Aluguel",
       "value": -1500,
-      "type": "expense",
-      "category": "Moradia",
+      "type": "despesa",
+      "categoryId": 2,
       "date": "2024-12-05"
     }
   ],

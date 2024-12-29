@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Transaction } from 'src/app/shared/transaction.model';
+import { Category, Transaction } from 'src/app/shared/transaction.model';
 import { TransactionService } from 'src/app/shared/transaction.service';
 
 @Component({
@@ -9,8 +9,9 @@ import { TransactionService } from 'src/app/shared/transaction.service';
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'description', 'value', 'category', 'date', 'actions'];
+  displayedColumns: string[] = ['id', 'description', 'value', 'category','type', 'date', 'actions'];
   transactions!: Transaction[]
+  categories!: Category[]
   
   constructor(private transactionService: TransactionService){}
 
@@ -19,6 +20,18 @@ export class TransactionListComponent implements OnInit {
       this.transactions = transactions;
       console.log(transactions);      
     })
+
+   this.transactionService.getCategories().subscribe( categories => {
+    this.categories = categories;
+    console.log(categories);
+    
+   }) 
+  } 
+
+  // Método para pegar o nome da categoria com base no categoryId
+  getCategoryName(categoryId: number): string {
+    const category = this.categories.find(cat => cat.id === categoryId);
+    return category ? category.name : 'Desconhecido';
   }
 
 }  
