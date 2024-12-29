@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="dashboard">
+    <mat-card class="card income">
+      <mat-card-title>Entradas</mat-card-title>
+      <mat-card-content>
+        <p>{{ entrada | currency:'BRL'}}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="card expense">
+      <mat-card-title>Gastos</mat-card-title>
+      <mat-card-content>
+        <p>{{ saida | currency:'BRL'}}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card [ngClass]="['card', getBalanceClass()]">
+      <mat-card-title>Balanço</mat-card-title>
+      <mat-card-content>
+        <p>{{ getBalance() | currency:'BRL' }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

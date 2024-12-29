@@ -1,0 +1,31 @@
+
+.dashboard {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  gap: 20px; /* Espaço entre os cards */
+  margin: 10px 20px;
+  padding: 10px;
+
+  .card {
+    flex: 1; /* Faz os cards ocuparem espaços iguais */
+    text-align: center;    
+    border: 1px solid #90caf9; /* Borda azul */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Bordas arredondadas */
+  }
+
+  .income {
+    border: 2px solid green;
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.4);
+  }
+  
+  .expense {
+    border: 2px solid rgb(231, 34, 27);
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Empilha os cards em telas menores */
+  }
+}

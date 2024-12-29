@@ -1,0 +1,32 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Salário",
+      "value": 5000,
+      "type": "income",
+      "category": "Trabalho",
+      "date": "2024-12-01"
+    },
+    {
+      "id": 2,
+      "description": "Aluguel",
+      "value": -1500,
+      "type": "expense",
+      "category": "Moradia",
+      "date": "2024-12-05"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Trabalho",
+      "type": "income"
+    },
+    {
+      "id": 2,
+      "name": "Moradia",
+      "type": "expense"
+    }
+  ]
+}
