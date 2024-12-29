@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./transaction-input.component.css']
 })
 export class TransactionInputComponent {
+  selectedDate: Date = new Date(); // Data atual como valor inicial
 
+  
 }

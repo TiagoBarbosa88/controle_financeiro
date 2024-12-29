@@ -15,7 +15,20 @@ import { TransactionListComponent } from './features/dashboard/transaction-list/
 import { HomeComponent } from './features/components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
 
+// Define os formatos de data personalizados
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'yyyy-MM-dd',  // Formato para parsing
+  },
+  display: {
+    dateInput: 'dd/MM/yyyy',  // Formato exibido
+    monthYearLabel: 'MMM yyyy',   // Exemplo: Jan 2022
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM yyyy',
+  },
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     HttpClientModule
+    ],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

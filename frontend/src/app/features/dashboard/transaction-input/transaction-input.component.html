@@ -4,20 +4,28 @@
       <mat-card-title>Cadastrar Transação</mat-card-title>
       <mat-card-content>
         <form class="form-row">
+           <!-- Campo de Data -->
+           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
+            <mat-label>Data</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
           <!-- Campo de Descrição -->
-          <mat-form-field appearance="outline" class="flex-item">
+          <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Descrição</mat-label>
             <input matInput type="text" placeholder="Digite uma descrição" required />
           </mat-form-field>
 
           <!-- Campo de Valor -->
-          <mat-form-field appearance="outline" class="flex-item">
+          <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Valor</mat-label>
             <input matInput type="number" placeholder="Digite o valor" required />
           </mat-form-field>
 
           <!-- Seleção de Tipo -->
-          <mat-form-field appearance="outline" class="flex-item">
+          <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Tipo</mat-label>
             <mat-select required>
               <mat-option value="receita">Receita</mat-option>
@@ -26,7 +34,7 @@
           </mat-form-field>
 
           <!-- Campo de Categoria -->
-          <mat-form-field appearance="outline" class="flex-item">
+          <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Categoria</mat-label>
             <mat-select required>
               <mat-option value="salario">Salário</mat-option>
