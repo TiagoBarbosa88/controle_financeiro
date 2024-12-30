@@ -18,7 +18,6 @@ export class TransactionListComponent implements OnInit {
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
-      console.log(this.transactions);
     })
 
     this.transactionService.getCategories().subscribe(categories => {
@@ -31,12 +30,6 @@ export class TransactionListComponent implements OnInit {
   getCategoryName(categoryId: number): string {
     const category = this.categories.find(cat => cat.id === categoryId);
     return category ? category.name : 'Desconhecido';
-  }
-
-
-  getTotalValue(): number {
-    return this.transactions.reduce((total, transaction) => total + transaction.value, 0);
-  }
-  
+  }  
 
 }  

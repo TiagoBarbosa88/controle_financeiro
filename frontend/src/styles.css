@@ -37,3 +37,23 @@ app-transaction-balance {
 app-transaction-input {
   margin-top: 5px; /* Reduz o espaço acima */
 }
+
+/* .msg-success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+.msg-error {
+  background-color: rgb(231, 34, 27) !important;
+  color: #fff !important;
+} */
+
+.mat-snack-bar-container.msg-success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+.mat-snack-bar-container.msg-error {
+  background-color: rgb(231, 34, 27) !important;
+  color: #fff !important;
+}
