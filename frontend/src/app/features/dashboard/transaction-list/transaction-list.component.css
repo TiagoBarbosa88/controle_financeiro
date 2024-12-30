@@ -59,3 +59,9 @@ tfoot th, tfoot td {
 .delete {
   color: rgb(231, 34, 27);
 }
+
+.no-transactions-message {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}

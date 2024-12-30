@@ -16,6 +16,7 @@ import { HomeComponent } from './features/components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
+import { TransactionService } from './shared/services/transaction.service';
 
 // Define os formatos de data personalizados
 export const MY_DATE_FORMATS = {
@@ -50,6 +51,7 @@ export const MY_DATE_FORMATS = {
     ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    TransactionService
   ],
   bootstrap: [AppComponent]
 })

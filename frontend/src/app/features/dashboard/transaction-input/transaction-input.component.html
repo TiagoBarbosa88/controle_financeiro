@@ -3,11 +3,11 @@
     <mat-card>
       <mat-card-title>Cadastrar Transação</mat-card-title>
       <mat-card-content>
-        <form class="form-row">
-           <!-- Campo de Data -->
-           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
+        <form class="form-row" (ngSubmit)="onSubmit()">
+          <!-- Campo de Data -->
+          <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Data</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required />
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" name="date" required />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -15,33 +15,31 @@
           <!-- Campo de Descrição -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Descrição</mat-label>
-            <input matInput type="text" placeholder="Digite uma descrição" required />
+            <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Digite uma descrição" required />
           </mat-form-field>
 
           <!-- Campo de Valor -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item valor">
             <mat-label>Valor</mat-label>
-            <input matInput type="number" placeholder="Digite o valor" required />
+            <input matInput type="number" [(ngModel)]="value" name="value" placeholder="Digite o valor" required />
           </mat-form-field>
 
           <!-- Seleção de Tipo -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item tipo">
             <mat-label>Tipo</mat-label>
-            <mat-select required>
-              <mat-option value="receita">Receita</mat-option>
-              <mat-option value="despesa">Despesa</mat-option>
+            <mat-select [(ngModel)]="type" name="type" required>
+              <mat-option value="income">Receita</mat-option>
+              <mat-option value="expense">Despesa</mat-option>
             </mat-select>
           </mat-form-field>
 
           <!-- Campo de Categoria -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item categoria">
             <mat-label>Categoria</mat-label>
-            <mat-select required>
-              <mat-option value="salario">Salário</mat-option>
-              <mat-option value="moradia">Moradia</mat-option>
-              <mat-option value="alimentacao">Alimentação</mat-option>
-              <mat-option value="lazer">Lazer</mat-option>
-              <mat-option value="outros">Outros</mat-option>
+            <mat-select [(ngModel)]="category" name="category" required>
+              <mat-option *ngFor="let category of categories" [value]="category.name">
+                {{ category.name }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
 
