@@ -1,8 +1,9 @@
 export interface Transaction {
-  id: number;
+  id?: number;
   description: string;
   value: number;
-  type: 'income' | 'expense'; // 'income' para entrada, 'expense' para saída
+  type: 'receita' | 'despesa'; // 'receita' para entrada, 'despesa' para saída
   category: string;
   date: string;
+  styleClass?: string;
 }

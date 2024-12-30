@@ -1,5 +1,5 @@
 export interface Category {
   id: number;
   name: string;
-  type: 'income' | 'expense';
+  type: 'receita' | 'despesa';
 }

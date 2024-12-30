@@ -15,7 +15,8 @@
           <!-- Campo de Descrição -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
             <mat-label>Descrição</mat-label>
-            <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Digite uma descrição" required />
+            <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Digite uma descrição"
+              required />
           </mat-form-field>
 
           <!-- Campo de Valor -->
@@ -28,8 +29,8 @@
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item tipo">
             <mat-label>Tipo</mat-label>
             <mat-select [(ngModel)]="type" name="type" required>
-              <mat-option value="income">Receita</mat-option>
-              <mat-option value="expense">Despesa</mat-option>
+              <mat-option value="receita">Receita</mat-option>
+              <mat-option value="despesa">Despesa</mat-option>
             </mat-select>
           </mat-form-field>
 

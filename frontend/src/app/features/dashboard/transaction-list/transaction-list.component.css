@@ -26,26 +26,26 @@ tfoot th, tfoot td {
 }
 
 /* Classe para Receita */
-.income {
+.receita {
   color: green; 
   line-height: 24px; /* Ajuste o line-height para garantir que o texto fique bem alinhado com o ícone */
 }
 
 /* Ícone de Receita (verde) */
-.income-icon {
+.receita-icon {
   color: green;
   vertical-align: middle; 
   margin-right: 5px; 
 }
 
 /* Classe para Despesa (vermelho) */
-.expense {
+.despesa {
   color: rgb(231, 34, 27); 
   line-height: 24px; 
 }
 
 /* Ícone de Despesa (vermelho) */
-.expense-icon {
+.despesa-icon {
   color: rgb(231, 34, 27);
   vertical-align: middle; 
   margin-right: 5px; 
