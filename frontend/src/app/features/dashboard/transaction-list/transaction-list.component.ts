@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, Transaction } from 'src/app/shared/models/transaction.model';
+import { Category } from 'src/app/shared/models/category.model';
+import { Transaction } from 'src/app/shared/models/transaction.model';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
 })
 export class TransactionListComponent implements OnInit {
   displayedColumns: string[] = ['description', 'value', 'category', 'type', 'date', 'actions'];
-  transactions!: Transaction[]
+  transactions: Transaction[] = [];
   categories!: Category[]
 
   constructor(private transactionService: TransactionService) { }
@@ -17,11 +18,13 @@ export class TransactionListComponent implements OnInit {
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
+      console.log(this.transactions);
     })
 
     this.transactionService.getCategories().subscribe(categories => {
       this.categories = categories;
     })
+
   }
 
   // Método para pegar o nome da categoria com base no categoryId
@@ -34,5 +37,6 @@ export class TransactionListComponent implements OnInit {
   getTotalValue(): number {
     return this.transactions.reduce((total, transaction) => total + transaction.value, 0);
   }
+  
 
 }  
