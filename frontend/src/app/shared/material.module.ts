@@ -13,7 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatTooltipModule } from '@angular/material/tooltip'; // Importando o m√≥dulo do Tooltip
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -33,6 +33,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'; // Importando o m√
     MatSnackBarModule,
     MatTabsModule,
     MatTooltipModule
+  ],
+  declarations: [
   ],
 })
 export class MaterialModule {}

@@ -12,11 +12,10 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-          <!-- Campo de Descrição -->
+          <!-- Campo de Título -->
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
-            <mat-label>Descrição</mat-label>
-            <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Digite uma descrição"
-              required />
+            <mat-label>Título</mat-label>
+            <input matInput type="text" [(ngModel)]="title" name="title" placeholder="Digite uma Título" required />
           </mat-form-field>
 
           <!-- Campo de Valor -->
@@ -38,8 +37,8 @@
           <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item categoria">
             <mat-label>Categoria</mat-label>
             <mat-select [(ngModel)]="category" name="category" required>
-              <mat-option *ngFor="let category of categories" [value]="category.name">
-                {{ category.name }}
+              <mat-option *ngFor="let category of categories" [value]="category.category_name">
+                {{ category.category_name }}
               </mat-option>
             </mat-select>
           </mat-form-field>

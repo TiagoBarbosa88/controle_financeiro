@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/shared/models/category.model';
 import { Transaction } from 'src/app/shared/models/transaction.model';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 
 @Component({
@@ -9,18 +10,21 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent implements OnInit {
-  displayedColumns: string[] = ['description', 'value', 'category', 'type', 'date', 'actions'];
+  displayedColumns: string[] = ['title', 'value', 'category', 'type', 'date', 'actions'];
   transactions: Transaction[] = [];
-  categories!: Category[]
+  categories!: Category[];
 
-  constructor(private transactionService: TransactionService) { }
+  constructor(
+    private transactionService: TransactionService,
+    private categoriesService: CategoriesService
+  ) { }
 
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
     })
 
-    this.transactionService.getCategories().subscribe(categories => {
+    this.categoriesService.getCategories().subscribe(categories => {
       this.categories = categories;
     })
 
@@ -29,7 +33,7 @@ export class TransactionListComponent implements OnInit {
   // Método para pegar o nome da categoria com base no categoryId
   getCategoryName(categoryId: number): string {
     const category = this.categories.find(cat => cat.id === categoryId);
-    return category ? category.name : 'Desconhecido';
-  }  
+    return category ? category.category_name : 'Desconhecido';
+  }
 
 }  
