@@ -11,6 +11,14 @@ html, body {
   list-style: none;
 }
 
+.container-fluid {
+  height: 100%;
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   flex: 1; /* Faz o container principal ocupar o espaço disponível */
   width: 95%;
@@ -35,7 +43,6 @@ html, body {
   background-color: #e0f7fa;
   text-align: center;
   width: 100%;
-  padding: 10px 0;
   margin-top: auto; /* Garante que o footer fique no fim da página */
 }
 
