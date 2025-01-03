@@ -2,8 +2,8 @@
   <h2 class="title">Listar Transações</h2>
   <div class="mat-elevation-z4">
     <!-- Verifica se há transações -->
-    <ng-container *ngIf="transactions.length > 0; else noTransactions">
-      <table mat-table [dataSource]="transactions" class="mat-table" matSort>
+    <ng-container *ngIf="dataSource.data.length > 0; else noTransactions">
+      <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
 
         <!-- title Column -->
         <ng-container matColumnDef="title">
@@ -58,6 +58,19 @@
         <!-- Data Rows -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+      <div class="paginator-container">
+        <div class="item-count">
+          Total de itens: {{ dataSource.data.length }}
+        </div>
+        <mat-paginator #paginator
+          [length]="dataSource.data.length"
+          [pageIndex]="0"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          aria-label="Select page">
+        </mat-paginator>
+      </div>
     </ng-container>
 
     <!-- Template para ausência de transações -->
@@ -66,5 +79,6 @@
         <h1>Nenhuma transação cadastrada até o momento.</h1>
       </div>
     </ng-template>
-  </div>
+
+    
 </div>

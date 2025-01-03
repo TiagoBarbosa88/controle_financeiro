@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/shared/models/category.model';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
@@ -10,36 +11,37 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
   styleUrls: ['./transaction-input.component.css']
 })
 export class TransactionInputComponent implements OnInit {
-  selectedDate: Date = new Date();
-  title: string = '';
-  value: number | null = null;
-  type: 'receita' | 'despesa' = 'receita';
-  category: number | null = null; 
+  transactionForm: FormGroup;
   categories: Category[] = [];
 
   constructor(
+    private fb: FormBuilder,
     private transactionService: TransactionService,
-    private categoriesService: CategoriesService
-  ) { }
+    private categoryService: CategoriesService
+  ) {
+    this.transactionForm = this.fb.group({
+      selectedDate: [new Date(), Validators.required],
+      title: ['', Validators.required],
+      value: [null, [Validators.required, Validators.min(0.01)]],
+      type: ['receita', Validators.required],
+      category: [null, Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     // Carregar as categorias quando o componente for inicializado
-    this.categoriesService.getCategories().subscribe(categories => {
+    this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
-    });
-  }
-
-  // Função para obter o categoryId a partir do nome da categoria
-  getCategoryId(categoryName: string): number | undefined {
-    const category = this.categories.find(cat => cat.category_name.toLowerCase() === categoryName.toLowerCase());
-    return category ? category.id : undefined;
+    })
   }
 
   // Método chamado no envio do formulário
   onSubmit(): void {
-    if (this.title && this.value !== null && this.category !== null) {
+    if (this.transactionForm.valid) {
+      const formValues = this.transactionForm.value;
+
       // Encontrar o nome da categoria com base no ID selecionado
-      const selectedCategory = this.categories.find(cat => cat.id === this.category);
+      const selectedCategory = this.categories.find(cat => cat.id === formValues.category);
 
       if (!selectedCategory) {
         this.transactionService.showMessage('Categoria inválida');
@@ -48,13 +50,13 @@ export class TransactionInputComponent implements OnInit {
 
       // Criar a nova transação com os campos necessários
       const newTransaction: Transaction = {
-        date: this.selectedDate.toISOString().split('T')[0], // Formato de data ISO
-        title: this.title,
-        value: this.value,
-        type: this.type,
+        date: formValues.selectedDate.toISOString().split('T')[0], // Formato de data ISO
+        title: formValues.title,
+        value: formValues.value,
+        type: formValues.type,
         categoryId: selectedCategory.id,
         category_name: selectedCategory.category_name,
-        styleClass: this.type === 'receita' ? 'receita' : 'despesa'
+        styleClass: formValues.type === 'receita' ? 'receita' : 'despesa'
       };
 
       // Enviar a transação para o serviço

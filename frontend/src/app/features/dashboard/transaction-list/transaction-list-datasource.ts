@@ -6,21 +6,17 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 
 /**
- * Data source for the TransactionListV2 view. This class should
+ * Data source for the TransactionListV3 view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TransactionListV2DataSource extends DataSource<Transaction> {
+export class TransactionListDataSource extends DataSource<Transaction> {
   data: Transaction[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
   constructor() {
     super();
-  }
-
-  setData(data: Transaction[]): void {
-    this.data = data;
   }
 
   /**
@@ -34,7 +30,7 @@ export class TransactionListV2DataSource extends DataSource<Transaction> {
       // stream for the data-table to consume.
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+          return this.getPagedData(this.getSortedData([...this.data]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -45,7 +41,7 @@ export class TransactionListV2DataSource extends DataSource<Transaction> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void {}
+  disconnect(): void { }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -54,7 +50,7 @@ export class TransactionListV2DataSource extends DataSource<Transaction> {
   private getPagedData(data: Transaction[]): Transaction[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-      return data.slice(startIndex, this.paginator.pageSize);
+      return data.splice(startIndex, this.paginator.pageSize);
     } else {
       return data;
     }
