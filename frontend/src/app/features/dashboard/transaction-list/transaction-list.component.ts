@@ -10,7 +10,7 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'value', 'category', 'type', 'date', 'actions'];
+  displayedColumns: string[] = ['title', 'value', 'type', 'category',  'date', 'actions'];
   transactions: Transaction[] = [];
   categories!: Category[];
 

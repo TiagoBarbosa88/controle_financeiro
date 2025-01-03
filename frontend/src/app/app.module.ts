@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './shared/material.module';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
 import { TransactionService } from './shared/services/transaction.service';
+import { TransactionInput2Component } from './features/dashboard/transaction-input2/transaction-input2.component';
 
 // Define os formatos de data personalizados
 export const MY_DATE_FORMATS = {
@@ -40,10 +42,12 @@ export const MY_DATE_FORMATS = {
     TransactionBalanceComponent,
     TransactionListComponent,
     HomeComponent,
+    TransactionInput2Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,

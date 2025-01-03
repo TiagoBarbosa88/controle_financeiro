@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="title">Adicionar Transação</h2>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"  class="form-row">  
+    <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" formControlName="value">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item tipo">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="receita">Receita</mat-option>
+        <mat-option value="despesa">Despesa</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item categoria">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.category_name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    
+    <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item data">
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="selectedDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="transactionForm.invalid" class="btn">Adicionar</button>
+  </form>
+</div>

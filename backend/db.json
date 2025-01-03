@@ -1,32 +1,56 @@
 {
-  "transactions": [
-    {
-      "id": 1,
-      "description": "Salário",
-      "value": 5000,
-      "type": "receita",
-      "categoryId": 1,
-      "date": "2024-12-01"
-    },
-    {
-      "id": 2,
-      "description": "Aluguel",
-      "value": -1500,
-      "type": "despesa",
-      "categoryId": 2,
-      "date": "2024-12-05"
-    }
-  ],
   "categories": [
     {
-      "id": 1,
-      "name": "Trabalho",
-      "type": "income"
+      "id": "1",
+      "category_name": "Trabalho"
     },
     {
-      "id": 2,
-      "name": "Moradia",
-      "type": "expense"
+      "id": "2",
+      "category_name": "Moradia"
+    },
+    {
+      "id": "3",
+      "category_name": "Alimentação"
+    },
+    {
+      "id": "4",
+      "category_name": "Lazer"
+    },
+    {
+      "id": "5",
+      "category_name": "Outros"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "52cf",
+      "date": "2025-01-03",
+      "title": "Salário Giselle",
+      "value": 5500,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
+    },
+    {
+      "id": "4911",
+      "date": "2025-01-03",
+      "title": "Salário Tiago",
+      "value": 5500,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
+    },
+    {
+      "id": "6bd9",
+      "date": "2025-01-03",
+      "title": "Internet",
+      "value": 100,
+      "type": "despesa",
+      "categoryId": "2",
+      "category_name": "Moradia",
+      "styleClass": "despesa"
     }
   ]
 }

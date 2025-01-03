@@ -1,0 +1,96 @@
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  /* height: 40px; */
+}
+
+.title {
+  text-align: center;
+
+}
+
+.flex-item {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+}
+
+.flex-item.data,
+.flex-item.tipo,
+.flex-item.categoria {
+  flex: 0 0 200px; 
+  max-width: 200px;
+}
+
+.mat-form-field.data,
+.mat-form-field.tipo,
+.mat-form-field.categoria {
+  width: 100%; /* Garante que o form field ocupe toda a largura disponível */
+}
+
+.mat-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ajusta a posição do conteúdo */
+}
+
+.btn {
+  width: 100%; /* Botão ocupa toda a largura disponível */
+  max-width: 150px; /* Limita o tamanho do botão */
+  height: 55px; /* Ajusta a altura do botão */
+}
+
+mat-card-content {
+  text-align: center;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+mat-card-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px; /* Adiciona padding para melhorar o espaçamento nos dispositivos móveis */
+  }
+
+  .flex-item {
+    flex: 1 1 100%; /* Garante que os campos ocupem 100% da largura da linha */
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+  }
+
+  .mat-form-field {
+    width: 100%; /* Garante que cada campo tenha 100% de largura */
+    margin-bottom: 10px; /* Espaçamento entre os campos */
+  }
+
+  .btn {
+    width: 100%; /* Garante que o botão ocupe 100% da largura */
+    margin-top: 15px; /* Espaço entre o botão e os campos */
+  }
+
+  mat-card-content {
+    flex-direction: column; /* Coloca os itens em uma coluna para telas menores */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+  }
+
+  mat-card-title {
+    text-align: center;
+  }
+
+  /* Garantir que os campos de valor, tipo e categoria ocupem 100% da largura */
+  .mat-form-field.valor,
+  .mat-form-field.tipo,
+  .mat-form-field.categoria {
+    width: 100%;  /* Cada um dos campos de "Valor", "Tipo" e "Categoria" ocupará toda a linha */
+  }
+}
