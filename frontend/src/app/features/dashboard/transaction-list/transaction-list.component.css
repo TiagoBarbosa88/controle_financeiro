@@ -3,6 +3,29 @@
     text-align: center;
 }
 
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+.mat-elevation-z4 {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 8px;
+}
+
+.no-transactions-message {
+  text-align: center;
+  padding: 20px;
+}
+
 table {
   border-collapse: collapse; /* Garante bordas colapsadas na tabela inteira */
   border: 1px solid black;
@@ -64,4 +87,11 @@ tfoot th, tfoot td {
   padding: 10px;
   text-align: center;
   font-size: 18px;
+}
+
+
+@media (max-width: 768px) {
+  .mat-header-cell, .mat-cell {
+    padding: 4px;
+  }
 }

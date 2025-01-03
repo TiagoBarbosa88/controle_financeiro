@@ -1,9 +1,9 @@
 <div class="container">
-  <h2 class="title">Listar Transações</h2>
+  <h2 class="title">Listar Transações V2</h2>
   <div class="mat-elevation-z4">
     <!-- Verifica se há transações -->
-    <ng-container *ngIf="transactions.length > 0; else noTransactions">
-      <table mat-table [dataSource]="transactions" class="mat-table" matSort>
+    <ng-container *ngIf="dataSource.data.length > 0; else noTransactions">
+      <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
 
         <!-- title Column -->
         <ng-container matColumnDef="title">
@@ -66,5 +66,13 @@
         <h1>Nenhuma transação cadastrada até o momento.</h1>
       </div>
     </ng-template>
+
+    <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+    </mat-paginator>
   </div>
 </div>

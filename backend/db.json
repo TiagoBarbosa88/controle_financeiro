@@ -51,6 +51,86 @@
       "categoryId": "2",
       "category_name": "Moradia",
       "styleClass": "despesa"
+    },
+    {
+      "id": "e18b",
+      "date": "2025-01-03",
+      "title": "teste3",
+      "value": 20,
+      "type": "despesa",
+      "categoryId": "2",
+      "category_name": "Moradia",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "8fa7",
+      "date": "2025-01-03",
+      "title": "teste4",
+      "value": 55,
+      "type": "despesa",
+      "categoryId": "3",
+      "category_name": "Alimentação",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "5de7",
+      "date": "2025-01-03",
+      "title": "teste6",
+      "value": 99,
+      "type": "despesa",
+      "categoryId": "4",
+      "category_name": "Lazer",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "f059",
+      "date": "2025-01-03",
+      "title": "teste7",
+      "value": 88,
+      "type": "despesa",
+      "categoryId": "5",
+      "category_name": "Outros",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "3664",
+      "date": "2025-01-03",
+      "title": "teste8",
+      "value": 10,
+      "type": "despesa",
+      "categoryId": "4",
+      "category_name": "Lazer",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "e206",
+      "date": "2025-01-03",
+      "title": "teste10",
+      "value": 1111,
+      "type": "despesa",
+      "categoryId": "3",
+      "category_name": "Alimentação",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "4add",
+      "date": "2025-01-03",
+      "title": "teste12",
+      "value": 12121,
+      "type": "despesa",
+      "categoryId": "5",
+      "category_name": "Outros",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "3dba",
+      "date": "2025-01-03",
+      "title": "teste11",
+      "value": 11,
+      "type": "despesa",
+      "categoryId": "4",
+      "category_name": "Lazer",
+      "styleClass": "despesa"
     }
   ]
 }

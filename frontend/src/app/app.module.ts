@@ -19,6 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TransactionService } from './shared/services/transaction.service';
 import { TransactionInput2Component } from './features/dashboard/transaction-input2/transaction-input2.component';
+import { TransactionListV2Component } from './features/dashboard/transaction-list-v2/transaction-list-v2.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { TransactionInput2Component } from './features/dashboard/transaction-inp
     TransactionListComponent,
     HomeComponent,
     TransactionInput2Component,
+    TransactionListV2Component,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,10 @@ import { TransactionInput2Component } from './features/dashboard/transaction-inp
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
