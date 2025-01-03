@@ -23,6 +23,7 @@ import { TransactionListV2Component } from './features/dashboard/transaction-lis
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { TransactionListV3Component } from './features/dashboard/transaction-list-v3/transaction-list-v3.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     TransactionInput2Component,
     TransactionListV2Component,
+    TransactionListV3Component,
   ],
   imports: [
     BrowserModule,

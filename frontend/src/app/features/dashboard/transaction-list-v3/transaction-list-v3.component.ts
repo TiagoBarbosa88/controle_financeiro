@@ -1,24 +1,24 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Transaction } from 'src/app/shared/models/transaction.model';
-import { Category } from 'src/app/shared/models/category.model';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { Transaction } from 'src/app/shared/models/transaction.model';
+import { Category } from 'src/app/shared/models/category.model';
 
 @Component({
-  selector: 'app-transaction-list-v2',
-  templateUrl: './transaction-list-v2.component.html',
-  styleUrls: ['./transaction-list-v2.component.css']
+  selector: 'app-transaction-list-v3',
+  templateUrl: './transaction-list-v3.component.html',
+  styleUrls: ['./transaction-list-v3.component.css']
 })
-export class TransactionListV2Component implements OnInit, AfterViewInit {
+export class TransactionListV3Component implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource<Transaction>();
 
   transactions: Transaction[] = [];
-  categories!: Category[];
+  categories: Category[] = [];
+  dataSource = new MatTableDataSource<Transaction>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns: string[] = ['title', 'value', 'type', 'category', 'date', 'actions'];
@@ -26,7 +26,7 @@ export class TransactionListV2Component implements OnInit, AfterViewInit {
   constructor(
     private transactionService: TransactionService,
     private categoriesService: CategoriesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
@@ -40,8 +40,8 @@ export class TransactionListV2Component implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   // Método para pegar o nome da categoria com base no categoryId
