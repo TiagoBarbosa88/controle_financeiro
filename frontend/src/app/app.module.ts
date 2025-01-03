@@ -16,22 +16,10 @@ import { TransactionListComponent } from './features/dashboard/transaction-list/
 import { HomeComponent } from './features/components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TransactionService } from './shared/services/transaction.service';
 import { TransactionInput2Component } from './features/dashboard/transaction-input2/transaction-input2.component';
 
-// Define os formatos de data personalizados
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'yyyy-MM-dd',  // Formato para parsing
-  },
-  display: {
-    dateInput: 'dd/MM/yyyy',  // Formato exibido
-    monthYearLabel: 'MMM yyyy',   // Exemplo: Jan 2022
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM yyyy',
-  },
-};
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,10 +39,24 @@ export const MY_DATE_FORMATS = {
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatNativeDateModule
     ],
   providers: [
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    {
+      provide: MAT_DATE_FORMATS, useValue: {
+        parse: {
+          dateInput: 'DD/MM/YYYY',
+        },
+        display: {
+          dateInput: 'DD/MM/YYYY',
+          monthYearLabel: 'MMMM YYYY',
+          dateA11yLabel: 'DD/MM/YYYY',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      }
+    },
     TransactionService
   ],
   bootstrap: [AppComponent]
