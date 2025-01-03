@@ -14,6 +14,6 @@ export class TransactionBalanceComponent {
   }
 
   getBalanceClass(): string {
-    return this.getBalance() >= 0 ? 'receita' : 'despesa';
+    return this.getBalance() >= 0 ? 'saldo' : 'despesa';
   }
 }

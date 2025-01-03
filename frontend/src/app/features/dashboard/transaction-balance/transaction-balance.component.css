@@ -25,6 +25,11 @@
     box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
   }
 
+  .saldo {
+    border: 2px solid #63b2f4;
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.4);
+  }
+
   @media (max-width: 768px) {
     flex-direction: column; /* Empilha os cards em telas menores */
   }
