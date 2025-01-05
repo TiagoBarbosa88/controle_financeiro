@@ -57,20 +57,7 @@
 
         <!-- Data Rows -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-      <div class="paginator-container">
-        <div class="item-count">
-          Total de itens: {{ dataSource.data.length }}
-        </div>
-        <mat-paginator #paginator
-          [length]="dataSource.data.length"
-          [pageIndex]="0"
-          [pageSize]="10"
-          [pageSizeOptions]="[5, 10, 20]"
-          aria-label="Select page">
-        </mat-paginator>
-      </div>
+      </table>      
     </ng-container>
 
     <!-- Template para ausência de transações -->
@@ -79,6 +66,19 @@
         <h1>Nenhuma transação cadastrada até o momento.</h1>
       </div>
     </ng-template>
+
+    <div class="paginator-container">
+      <div class="item-count">
+        Total de itens: {{ dataSource.data.length }}
+      </div>
+      <mat-paginator #paginator
+        [length]="dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
 
     
 </div>
