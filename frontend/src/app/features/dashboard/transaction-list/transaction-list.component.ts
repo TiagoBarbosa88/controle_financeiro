@@ -6,6 +6,7 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { Category } from 'src/app/shared/models/category.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-list',
@@ -25,7 +26,7 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
 
   constructor(
     private transactionService: TransactionService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
   ) { }
 
   ngOnInit(): void {

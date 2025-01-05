@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TransactionListComponent } from './features/dashboard/transaction-list/transaction-list.component';
+import { TransactionEditComponent } from './features/dashboard/transaction-edit/transaction-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TransactionListComponent } from './features/dashboard/transaction-list/
     HomeComponent,
     TransactionInputComponent,
     TransactionListComponent,
+    TransactionEditComponent,
   ],
   imports: [
     BrowserModule,
