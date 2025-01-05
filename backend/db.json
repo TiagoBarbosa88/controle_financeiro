@@ -26,21 +26,19 @@
       "id": "52cf",
       "date": "2025-01-03",
       "title": "Salário Giselle",
-      "value": 5500,
+      "value": 5502,
       "type": "receita",
       "categoryId": "1",
-      "category_name": "Trabalho",
-      "styleClass": "receita"
+      "category_name": "Trabalho"
     },
     {
       "id": "4911",
       "date": "2025-01-03",
       "title": "Salário Tiago",
-      "value": 5500,
+      "value": 5100,
       "type": "receita",
       "categoryId": "1",
-      "category_name": "Trabalho",
-      "styleClass": "receita"
+      "category_name": "Trabalho"
     },
     {
       "id": "6bd9",
@@ -74,13 +72,12 @@
     },
     {
       "id": "5de7",
-      "date": "2025-01-03",
-      "title": "teste6",
-      "value": 99,
-      "type": "despesa",
-      "categoryId": "4",
-      "category_name": "Lazer",
-      "styleClass": "despesa"
+      "date": "2025-01-05",
+      "title": "Freelance",
+      "value": 250,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho"
     },
     {
       "id": "f059",
