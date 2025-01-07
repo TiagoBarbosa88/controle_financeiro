@@ -7,6 +7,7 @@ import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { Category } from 'src/app/shared/models/category.model';
 import { Router } from '@angular/router';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-list',
@@ -30,13 +31,21 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getTransactions();
+
+    this.getCategories();
+  }
+
+  private getCategories() {
+    this.categoriesService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
+  }
+
+  private getTransactions() {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
       this.dataSource.data = transactions;
-    });
-
-    this.categoriesService.getCategories().subscribe(categories => {
-      this.categories = categories;
     });
   }
 
@@ -49,5 +58,13 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   getCategoryName(categoryId: number): string {
     const category = this.categories.find(cat => cat.id === categoryId);
     return category ? category.category_name : 'Desconhecido';
+  }
+
+  public deleteTransaction(id: string) {
+    console.log(id);
+    this.transactionService.deleteTransaction(id).subscribe(() => {
+      this.transactionService.showMessage('Item removido com sucesso !')  
+      this.getTransactions()  
+    })
   }
 }

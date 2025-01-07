@@ -46,4 +46,9 @@ export class TransactionService {
     const url = `${this.transactionsApi}/${transaction.id}`;
     return this.http.put<Transaction>(url, transaction)
   }
+
+  deleteTransaction(id: string): Observable<Transaction>{
+    const url = `${this.transactionsApi}/${id}`;
+    return this.http.delete<Transaction>(url)
+  }
 }

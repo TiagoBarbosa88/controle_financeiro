@@ -20,7 +20,8 @@
         <!-- Type Column -->
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
-          <td mat-cell *matCellDef="let row" [ngClass]="{'receita': row.type === 'receita', 'despesa': row.type === 'despesa'}">
+          <td mat-cell *matCellDef="let row"
+            [ngClass]="{'receita': row.type === 'receita', 'despesa': row.type === 'despesa'}">
             <mat-icon *ngIf="row.type === 'receita'" class="receita-icon">add_circle</mat-icon>
             <mat-icon *ngIf="row.type === 'despesa'" class="despesa-icon">remove_circle</mat-icon>
             {{ row.type | titlecase }}
@@ -32,7 +33,7 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoria</th>
           <td mat-cell *matCellDef="let row">{{ getCategoryName(row.categoryId) }}</td>
         </ng-container>
-     
+
         <!-- Date Column -->
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Data</th>
@@ -46,7 +47,8 @@
             <a routerLink="/transaction/edit/{{ row.id }}" class="edit" matTooltip="Editar">
               <i class="material-icons">edit</i>
             </a>
-            <a routerLink="/transaction/delete/{{ row.id }}" class="delete" matTooltip="Deletar">
+            <a (click)="deleteTransaction(row.id)" class="delete cursor-pointer"
+              matTooltip="Deletar">
               <i class="material-icons">delete</i>
             </a>
           </td>
@@ -57,7 +59,7 @@
 
         <!-- Data Rows -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>      
+      </table>
     </ng-container>
 
     <!-- Template para ausência de transações -->
@@ -71,14 +73,10 @@
       <div class="item-count">
         Total de itens: {{ dataSource.data.length }}
       </div>
-      <mat-paginator #paginator
-        [length]="dataSource.data.length"
-        [pageIndex]="0"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 20]"
-        aria-label="Select page">
+      <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
       </mat-paginator>
     </div>
 
-    
-</div>
+
+  </div>
