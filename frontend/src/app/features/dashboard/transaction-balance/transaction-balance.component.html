@@ -1,21 +1,38 @@
 <div class="container">
   <div class="dashboard">
     <mat-card class="card receita">
-      <mat-card-title>Entradas</mat-card-title>
+      <mat-card-header>
+        <div class="card-header">
+          <mat-icon class="card-icon icon-positive">attach_money</mat-icon>
+          <mat-card-title>Entradas</mat-card-title>
+        </div>
+      </mat-card-header>
       <mat-card-content>
-        <p>{{ entrada | currency:'BRL'}}</p>
+        <p class="balance-value">{{ entrada | currency: 'BRL' }}</p>
       </mat-card-content>
     </mat-card>
+
     <mat-card class="card despesa">
-      <mat-card-title>Gastos</mat-card-title>
+      <mat-card-header>
+        <div class="card-header">
+          <mat-icon class="card-icon icon-negative">money_off</mat-icon>
+          <mat-card-title>Gastos</mat-card-title>
+        </div>
+      </mat-card-header>
       <mat-card-content>
-        <p>{{ saida | currency:'BRL'}}</p>
+        <p class="balance-value">{{ saida | currency: 'BRL' }}</p>
       </mat-card-content>
     </mat-card>
+
     <mat-card [ngClass]="['card', getBalanceClass()]">
-      <mat-card-title>Balanço</mat-card-title>
+      <mat-card-header>
+        <div class="card-header">
+          <mat-icon class="card-icon" [ngClass]="getIconClass()">account_balance</mat-icon>
+          <mat-card-title>Balanço</mat-card-title>
+        </div>
+      </mat-card-header>
       <mat-card-content>
-        <p>{{ saldo | currency:'BRL' }}</p>
+        <p class="balance-value">{{ saldo | currency: 'BRL' }}</p>
       </mat-card-content>
     </mat-card>
   </div>

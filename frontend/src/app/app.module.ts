@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from  '@angular/common';
 
 import { MaterialModule } from './shared/material.module';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
@@ -23,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { TransactionListComponent } from './features/dashboard/transaction-list/transaction-list.component';
 import { TransactionEditComponent } from './features/dashboard/transaction-edit/transaction-edit.component';
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +53,10 @@ import { TransactionEditComponent } from './features/dashboard/transaction-edit/
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
+    },
     {
       provide: MAT_DATE_FORMATS, useValue: {
         parse: {

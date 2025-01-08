@@ -23,6 +23,23 @@ export class TransactionBalanceComponent implements OnInit {
   } 
 
   getBalanceClass(): string {
-    return this.saldo >= 0 ? 'saldo' : 'despesa';
+    if (this.saldo > 0) {
+      return 'saldo'; // Classe para saldo positivo
+    } else if (this.saldo < 0) {
+      return 'despesa'; // Classe para saldo negativo
+    } else {
+      return 'neutro'; // Classe para saldo neutro (zero)
+    }
   }
+  
+  getIconClass(): string {
+    if (this.saldo > 0) {
+      return 'icon-positive'; // Classe para ícone de saldo positivo
+    } else if (this.saldo < 0) {
+      return 'icon-negative'; // Classe para ícone de saldo negativo
+    } else {
+      return 'icon-neutral'; // Classe para ícone de saldo neutro
+    }
+  }
+  
 }
