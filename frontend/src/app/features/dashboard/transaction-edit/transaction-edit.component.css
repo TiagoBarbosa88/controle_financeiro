@@ -63,14 +63,24 @@ mat-card-title {
     padding: 10px; /* Adiciona padding para melhorar o espaçamento nos dispositivos móveis */
   }
 
+  .title {
+    text-align: center;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
   .flex-item,
   .flex-item.data,
   .flex-item.tipo,
   .flex-item.categoria,
   .flex-item.valor {
     flex: 1 1 100%; 
-    width: 100%; 
-    margin-bottom: 15px; 
+    max-width: 90%; 
+    margin-bottom: 5px; 
     box-sizing: border-box;
   }
 
@@ -79,9 +89,12 @@ mat-card-title {
     margin-bottom: 10px; /* Espaçamento entre os campos */
   }
 
+  .btn-mobile {
+    text-align: center;
+  }
+
   .btn {
-    width: 100% !important; /* Garante que o botão ocupe 100% da largura */
+    max-width: 90% !important; /* Garante que o botão ocupe 100% da largura */
     margin-top: 15px; /* Espaço entre o botão e os campos */
-    border: 1px red solid;
   }
 }
