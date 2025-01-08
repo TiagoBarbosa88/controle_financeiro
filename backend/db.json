@@ -26,49 +26,29 @@
       "id": "e4af",
       "date": "2025-01-08",
       "title": "teste1",
-      "value": 11000,
+      "value": 1000,
       "type": "receita",
       "categoryId": "1",
       "category_name": "Trabalho"
     },
     {
-      "id": "8bb6",
+      "id": "9274",
       "date": "2025-01-08",
-      "title": "aluguel",
-      "value": 15000,
-      "type": "despesa",
-      "categoryId": "2",
-      "category_name": "Moradia",
-      "styleClass": "despesa"
-    },
-    {
-      "id": "cdcb",
-      "date": "2025-01-08",
-      "title": "teste222",
-      "value": 2222,
+      "title": "freela",
+      "value": 250,
       "type": "receita",
       "categoryId": "1",
       "category_name": "Trabalho",
       "styleClass": "receita"
     },
     {
-      "id": "1b29",
+      "id": "3326",
       "date": "2025-01-08",
-      "title": "tese",
-      "value": 100000,
-      "type": "receita",
-      "categoryId": "1",
-      "category_name": "Trabalho",
-      "styleClass": "receita"
-    },
-    {
-      "id": "9d73",
-      "date": "2025-01-08",
-      "title": "testess",
-      "value": 888,
+      "title": "Pizza",
+      "value": 90,
       "type": "despesa",
-      "categoryId": "4",
-      "category_name": "Lazer",
+      "categoryId": "3",
+      "category_name": "Alimentação",
       "styleClass": "despesa"
     }
   ]

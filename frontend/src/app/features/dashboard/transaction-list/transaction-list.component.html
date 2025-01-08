@@ -64,16 +64,16 @@
       </div>
 
       <!-- Layout mobile -->
-       <ng-template #mobileView>
-        <div class="trasanction-list" *ngFor="let row of dataSource.data">
-          <div class="transaction-item">
+      <ng-template #mobileView>
+        <div class="transaction-list">
+          <div class="transaction-item" *ngFor="let row of dataSource.data">
             <div class="transaction-header">
               <span class="transaction-title">{{ row.title }}</span>
               <span class="transaction-value">{{ row.value | currency:'BRL' }} </span>
             </div>
             <div class="transaction-details">
-              <span class="transaction-type" [ngClass]="{'receita' : row.type === 'receita','despesa': row.type === 'despesa'}"> 
-                <mat-icon *ngIf="row.type === 'receita'" class="receita-icon">add-circle</mat-icon>
+              <span class="transaction-type" [ngClass]="{'receita': row.type === 'receita', 'despesa': row.type === 'despesa'}">
+                <mat-icon *ngIf="row.type === 'receita'" class="receita-icon">add_circle</mat-icon>
                 <mat-icon *ngIf="row.type === 'despesa'" class="despesa-icon">remove_circle</mat-icon>
                 {{ row.type | titlecase }}
               </span>
@@ -81,17 +81,17 @@
               <span class="transaction-date">{{ row.date | date: 'dd/MM/yyyy' }}</span>
             </div>
             <div class="transaction-actions">
-              <a routerLink="/transactions/edit/{{ row.id }}" class="edit" matTooltip="Editar">
+              <a routerLink="/transaction/edit/{{ row.id }}" class="edit" matTooltip="Editar">
                 <i class="material-icons">edit</i>
               </a>
               <a *ngIf="row.id" (click)="deleteTransaction(row.id)" class="delete" matTooltip="Deletar">
                 <i class="material-icons">delete</i>
               </a>
-
             </div>
           </div>
         </div>
-       </ng-template>
+      </ng-template>
+      
     </ng-container>
 
     <!-- Template para ausência de transações -->

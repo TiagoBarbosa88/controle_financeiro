@@ -117,14 +117,14 @@ tfoot td {
     padding: 4px;
   }
 
-  .mat-table{
+  .mat-table {
     display: none;
   }
 
   .transaction-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px; /* Define o espaçamento entre os cards */
     margin-bottom: 5px;
   }
 
@@ -135,9 +135,10 @@ tfoot td {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0; /* Evita conflitos com o gap */
   }
 
-  .transaction-header{
+  .transaction-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -166,18 +167,20 @@ tfoot td {
     align-items: center;
   }
 
-  .transaction-category, .transaction-date {
+  .transaction-category,
+  .transaction-date {
     font-size: 14px;
-    color: #757575;    
+    color: #757575;
   }
 
   .transaction-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 10px
+    gap: 10px;
   }
 
   .paginator-container {
     flex-direction: row;
   }
 }
+
