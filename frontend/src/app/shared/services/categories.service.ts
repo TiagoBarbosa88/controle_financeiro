@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -11,8 +10,7 @@ export class CategoriesService {
   categories: Category[] = [];
   private categoryApi = 'http://localhost:3001/categories';
 
-  constructor(
-    private snackBar: MatSnackBar,
+  constructor(    
     private http: HttpClient
   ) { }
 
@@ -24,6 +22,4 @@ export class CategoriesService {
   public getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.categoryApi)
   }
-
-
 }

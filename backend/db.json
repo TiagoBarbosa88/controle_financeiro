@@ -23,71 +23,13 @@
   ],
   "transactions": [
     {
-      "id": "52cf",
-      "date": "2025-01-03",
-      "title": "Salário Giselle",
-      "value": 6000,
+      "id": "e4af",
+      "date": "2025-01-08",
+      "title": "teste1",
+      "value": 11000,
       "type": "receita",
       "categoryId": "1",
       "category_name": "Trabalho"
-    },
-    {
-      "id": "4911",
-      "date": "2025-01-03",
-      "title": "Salário Tiago",
-      "value": 5100,
-      "type": "receita",
-      "categoryId": "1",
-      "category_name": "Trabalho"
-    },
-    {
-      "id": "6bd9",
-      "date": "2025-01-03",
-      "title": "Internet",
-      "value": 100,
-      "type": "despesa",
-      "categoryId": "2",
-      "category_name": "Moradia",
-      "styleClass": "despesa"
-    },
-    {
-      "id": "e18b",
-      "date": "2025-01-03",
-      "title": "teste3",
-      "value": 20,
-      "type": "despesa",
-      "categoryId": "2",
-      "category_name": "Moradia",
-      "styleClass": "despesa"
-    },
-    {
-      "id": "8fa7",
-      "date": "2025-01-03",
-      "title": "teste4",
-      "value": 55,
-      "type": "despesa",
-      "categoryId": "3",
-      "category_name": "Alimentação",
-      "styleClass": "despesa"
-    },
-    {
-      "id": "5de7",
-      "date": "2025-01-05",
-      "title": "Freelance",
-      "value": 250,
-      "type": "receita",
-      "categoryId": "1",
-      "category_name": "Trabalho"
-    },
-    {
-      "id": "f059",
-      "date": "2025-01-03",
-      "title": "teste7",
-      "value": 88,
-      "type": "despesa",
-      "categoryId": "5",
-      "category_name": "Outros",
-      "styleClass": "despesa"
     }
   ]
 }
