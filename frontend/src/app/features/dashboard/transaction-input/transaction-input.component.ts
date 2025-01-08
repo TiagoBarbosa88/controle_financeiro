@@ -23,7 +23,7 @@ export class TransactionInputComponent implements OnInit {
       selectedDate: [new Date(), Validators.required],
       title: ['', Validators.required],
       value: [null, [Validators.required, Validators.min(0.01)]],
-      type: ['receita', Validators.required],
+      type: ['', Validators.required],
       category: [null, Validators.required]
     })
   }
