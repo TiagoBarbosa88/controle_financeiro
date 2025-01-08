@@ -34,7 +34,7 @@ export class TransactionBalanceComponent implements OnInit {
   
   getIconClass(): string {
     if (this.saldo > 0) {
-      return 'icon-positive'; // Classe para ícone de saldo positivo
+      return 'icon-saldo'; // Classe para ícone de saldo positivo
     } else if (this.saldo < 0) {
       return 'icon-negative'; // Classe para ícone de saldo negativo
     } else {

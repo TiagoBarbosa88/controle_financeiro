@@ -71,7 +71,7 @@
 }
 
 .icon-positive {
-  color: #63b2f4; /* Verde para saldo positivo */
+  color: #4caf50; 
 }
 
 .icon-negative {
@@ -80,6 +80,10 @@
 
 .icon-neutral {
   color: #ffc107; /* Amarelo para saldo neutro */
+}
+
+.icon-saldo {
+  color: #63b2f4; 
 }
 
 mat-card-title {

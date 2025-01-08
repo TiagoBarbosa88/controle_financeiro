@@ -30,6 +30,16 @@
       "type": "receita",
       "categoryId": "1",
       "category_name": "Trabalho"
+    },
+    {
+      "id": "8bb6",
+      "date": "2025-01-08",
+      "title": "aluguel",
+      "value": 15000,
+      "type": "despesa",
+      "categoryId": "2",
+      "category_name": "Moradia",
+      "styleClass": "despesa"
     }
   ]
 }
