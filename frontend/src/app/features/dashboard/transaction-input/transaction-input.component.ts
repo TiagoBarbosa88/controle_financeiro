@@ -1,5 +1,7 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/shared/models/category.model';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
@@ -13,11 +15,15 @@ import { TransactionService } from 'src/app/shared/services/transaction.service'
 export class TransactionInputComponent implements OnInit {
   transactionForm: FormGroup;
   categories: Category[] = [];
+  isWeb: boolean = true;
+  showForm: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private transactionService: TransactionService,
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
   ) {
     this.transactionForm = this.fb.group({
       selectedDate: [new Date(), Validators.required],
@@ -33,6 +39,15 @@ export class TransactionInputComponent implements OnInit {
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
     })
+
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+      this.isWeb = !result.matches;
+    })
+
+    // Verifica se a rota atual é /transacion/add
+    if(this.router.url === '/transaction/add'){
+      this.showForm = true;
+    }
   }
 
   // Método chamado no envio do formulário
@@ -67,5 +82,13 @@ export class TransactionInputComponent implements OnInit {
     } else {
       this.transactionService.showMessage('Por favor, preencha todos os campos corretamente.');
     }
+  }
+
+  navigateToAddTransaction(): void {
+    this.router.navigate(['transaction/add']);
+  }
+
+  navigateToHome(): void {
+    this.router.navigate(['/'])
   }
 }

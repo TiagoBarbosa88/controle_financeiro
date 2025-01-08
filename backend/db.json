@@ -40,6 +40,26 @@
       "categoryId": "2",
       "category_name": "Moradia",
       "styleClass": "despesa"
+    },
+    {
+      "id": "cdcb",
+      "date": "2025-01-08",
+      "title": "teste222",
+      "value": 2222,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
+    },
+    {
+      "id": "1b29",
+      "date": "2025-01-08",
+      "title": "tese",
+      "value": 100000,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
     }
   ]
 }
