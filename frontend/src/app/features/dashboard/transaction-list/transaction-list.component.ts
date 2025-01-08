@@ -9,6 +9,7 @@ import { Category } from 'src/app/shared/models/category.model';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { OperationsService } from 'src/app/shared/services/operations.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-transaction-list',
@@ -21,6 +22,7 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
 
   transactions: Transaction[] = [];
   categories: Category[] = [];
+  isWeb: boolean = true;
   dataSource = new MatTableDataSource<Transaction>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -29,12 +31,18 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   constructor(
     private transactionService: TransactionService,
     private categoriesService: CategoriesService,
-    private operationsService: OperationsService
+    private operationsService: OperationsService,
+    private breakpointObserver: BreakpointObserver,
+    
   ) { }
 
   ngOnInit(): void {
     this.getTransactions();
     this.getCategories();
+
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+          this.isWeb = !result.matches;
+        })
   }
 
   private getCategories() {
@@ -61,8 +69,8 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
     return category ? category.category_name : 'Desconhecido';
   }
 
-  public deleteTransaction(id: string) {   
-    this.transactionService.deleteTransaction(id).subscribe(() => {   
+  public deleteTransaction(id: number) {   
+    this.transactionService.deleteTransaction(id.toString()).subscribe(() => {   
       this.transactionService.showMessage('Item removido com sucesso !')  
       this.getTransactions()  
       this.operationsService.refreshTotals();

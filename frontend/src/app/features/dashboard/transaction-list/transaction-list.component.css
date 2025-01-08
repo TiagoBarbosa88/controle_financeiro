@@ -116,4 +116,68 @@ tfoot td {
   .mat-cell {
     padding: 4px;
   }
+
+  .mat-table{
+    display: none;
+  }
+
+  .transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .transaction-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .transaction-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .transaction-title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .transaction-value {
+    font-size: 16px;
+    color: #252626;
+  }
+
+  .transaction-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .transaction-type {
+    display: flex;
+    align-items: center;
+  }
+
+  .transaction-category, .transaction-date {
+    font-size: 14px;
+    color: #757575;    
+  }
+
+  .transaction-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px
+  }
+
+  .paginator-container {
+    flex-direction: row;
+  }
 }

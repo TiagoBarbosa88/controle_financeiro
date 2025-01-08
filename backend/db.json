@@ -60,6 +60,16 @@
       "categoryId": "1",
       "category_name": "Trabalho",
       "styleClass": "receita"
+    },
+    {
+      "id": "9d73",
+      "date": "2025-01-08",
+      "title": "testess",
+      "value": 888,
+      "type": "despesa",
+      "categoryId": "4",
+      "category_name": "Lazer",
+      "styleClass": "despesa"
     }
   ]
 }
