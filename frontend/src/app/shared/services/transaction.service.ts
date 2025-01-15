@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from '../models/transaction.model';
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
 
-  private transactionsApi = 'http://localhost:3001/transactions';
+  // private transactionsApi = 'http://localhost:3001/transactions';
+  private transactionsApi = environment.transactionUrl
 
   transactions: Transaction[] = [];
 
