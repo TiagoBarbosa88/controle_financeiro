@@ -1,3 +1,8 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>X</button>
+</mat-dialog-actions>
+
+<mat-dialog-content class="mat-typography">
 <div *ngIf="isWeb; else mobileView">
   <h2 class="title">Adicionar Transação</h2>
   <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"  class="form-row">  
@@ -41,7 +46,7 @@
 </div>
 
 <ng-template #mobileView>
-  <div *ngIf="isWeb || showForm; else showButton">
+  <!-- <div *ngIf="isWeb || showForm; else showButton"> -->
     <h2 class="title">Adicionar Transação</h2>
     <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()"  class="form-row">  
       <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item">
@@ -84,15 +89,15 @@
         Voltar
       </button>
     </form>
-  </div>
+  <!-- </div> -->
 </ng-template>
 
-<ng-template #showButton>
+<!-- <ng-template #showButton>
   <div class="btn-mobile">
     <h2 class="title">Adicionar Transação</h2>
     <button mat-raised-button color="primary" class="btn" (click)="navigateToAddTransaction()">
       Adicionar
     </button>
   </div>
-
-</ng-template>
+</ng-template> -->
+</mat-dialog-content>

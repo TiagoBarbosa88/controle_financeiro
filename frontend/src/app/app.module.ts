@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TransactionListComponent } from './features/dashboard/transaction-list/transaction-list.component';
 import { TransactionEditComponent } from './features/dashboard/transaction-edit/transaction-edit.component';
+import { TransactionDataComponent } from './features/dashboard/transaction-data/transaction-data.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -37,6 +38,7 @@ registerLocaleData(localePt);
     TransactionInputComponent,
     TransactionListComponent,
     TransactionEditComponent,
+    TransactionDataComponent,
   ],
   imports: [
     BrowserModule,
