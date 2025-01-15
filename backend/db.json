@@ -23,33 +23,64 @@
   ],
   "transactions": [
     {
-      "id": "e4af",
-      "date": "2025-01-08",
-      "title": "teste1",
-      "value": 1000,
-      "type": "receita",
-      "categoryId": "1",
-      "category_name": "Trabalho"
-    },
-    {
-      "id": "9274",
-      "date": "2025-01-08",
-      "title": "freela",
-      "value": 250,
+      "id": "5e41",
+      "date": "2025-01-02",
+      "title": "teste",
+      "value": 100,
       "type": "receita",
       "categoryId": "1",
       "category_name": "Trabalho",
       "styleClass": "receita"
     },
     {
-      "id": "3326",
-      "date": "2025-01-08",
-      "title": "Pizza",
-      "value": 90,
+      "id": "a845",
+      "date": "2025-02-05",
+      "title": "teste",
+      "value": 100,
+      "type": "despesa",
+      "categoryId": "2",
+      "category_name": "Moradia",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "0e07",
+      "date": "2025-03-04",
+      "title": "teste3",
+      "value": 100,
       "type": "despesa",
       "categoryId": "3",
       "category_name": "Alimentação",
       "styleClass": "despesa"
+    },
+    {
+      "id": "4280",
+      "date": "2025-02-11",
+      "title": "teste feveiro",
+      "value": 99,
+      "type": "despesa",
+      "categoryId": "5",
+      "category_name": "Outros",
+      "styleClass": "despesa"
+    },
+    {
+      "id": "3f76",
+      "date": "2025-01-15",
+      "title": "teste4",
+      "value": 199,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
+    },
+    {
+      "id": "7705",
+      "date": "2025-01-15",
+      "title": "teste5",
+      "value": 1000,
+      "type": "receita",
+      "categoryId": "1",
+      "category_name": "Trabalho",
+      "styleClass": "receita"
     }
   ]
 }
