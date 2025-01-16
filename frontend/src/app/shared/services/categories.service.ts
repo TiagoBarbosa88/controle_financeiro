@@ -18,7 +18,7 @@ export class CategoriesService {
 
   getCategoryId(categoryName: string): number {
     const category = this.categories.find(cat => cat.category_name === categoryName);
-    return category ? category.id : 0;
+    return category ? Number(category.id) : 0;
   }
 
   public getCategories(): Observable<Category[]> {

@@ -70,7 +70,10 @@ export class TransactionInputComponent implements OnInit {
         value: formValues.value,
         type: formValues.type,
         categoryId: selectedCategory.id,
-        category_name: selectedCategory.category_name,
+        category: {
+          id: selectedCategory.id,
+          categoryName: selectedCategory.category_name // Atualizar com o nome da categoria
+        },
         styleClass: formValues.type === 'receita' ? 'receita' : 'despesa'
       };
 

@@ -86,7 +86,7 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
     return category ? category.category_name : 'Desconhecido';
   }
 
-  public deleteTransaction(id: number) {
+  public deleteTransaction(id: string) {
     this.transactionService.deleteTransaction(id.toString()).subscribe(() => {
       this.transactionService.showMessage('Item removido com sucesso!');
       const updatedTransactions = this.transactions.filter(transaction => transaction.id !== id);
