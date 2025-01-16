@@ -9,14 +9,22 @@ import * as moment from 'moment'
 })
 export class FilterDataService {
   private transactionsApi = 'http://localhost:3001/transactions';
-  transaction: Transaction[] = []
+  transactions: Transaction[] = []
 
-  // evento de mudançã
+  // evento de mudança de transações filtradas para a LISTA
   private monthYearChangeSource = new Subject<{ month: number, year: number }>();
   monthYearChange$ = this.monthYearChangeSource.asObservable();
 
   emitMonthYearChange(month: number, year: number): void {
     this.monthYearChangeSource.next({ month, year })
+  }
+
+  // evento de mudança de transações filtradas para o BALANCE
+  private filteredTransactionsSource = new Subject<Transaction[]>();
+  filteredTransactions$ = this.filteredTransactionsSource.asObservable();
+
+  emitFilteredTransactions(transactions: Transaction[]): void {
+  this.filteredTransactionsSource.next(transactions);
   }
 
   constructor( private http: HttpClient){}
@@ -26,10 +34,18 @@ export class FilterDataService {
   }
 
   filterTransactions(transactions: Transaction[], month: number, year: number): Transaction[]{
-    return transactions.filter(transaction => {
+    const filtered = transactions.filter( transaction  => {
       const transactionDate = moment(transaction.date);
       return transactionDate.month() === month && transactionDate.year() === year;
     })
+    return filtered;    
+  }
+
+  calculateTotals(transactions: Transaction[]):{entrada: number, saida: number, saldo: number}{
+    const entrada = transactions.filter(t => t.type === 'receita').reduce((acc, t) => acc + t.value, 0)
+    const saida = transactions.filter(t => t.type === 'despesa').reduce((acc, t) => acc + t.value, 0)
+    const saldo = entrada - saida
+    return { entrada, saida, saldo };
   }
 }
 
