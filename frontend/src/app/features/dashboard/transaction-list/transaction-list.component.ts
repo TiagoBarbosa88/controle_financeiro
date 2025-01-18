@@ -37,6 +37,11 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Defina o mês e ano iniciais com base na data atual
+    const currentDate = new Date();
+    this.selectedMonth = currentDate.getMonth(); // Mês atual (0-11)
+    this.selectedYear = currentDate.getFullYear(); // Ano atual
+    
     this.getTransactions();
     this.getCategories();
 
@@ -44,7 +49,12 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
       this.isWeb = !result.matches;
     });
 
-    console.log(this.filteredTransactions);
+    // Assina o observable para atualizar as transações filtradas
+    this.filterDataService.filteredTransactions$.subscribe(filteredTransactions => {
+      if (filteredTransactions) {
+        this.updateDataSource(filteredTransactions);
+      }
+    });
   }
 
   private getCategories() {
@@ -59,21 +69,24 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
         ...transaction,
         category_name: this.getCategoryName(transaction.categoryId) // Adiciona o nome da categoria
       }));
-      this.updateDataSource(this.transactions);
+
+     
+
+      // Aplica o filtro inicial com base no mês e ano atual
+      this.filterTransaction();
+      // this.updateDataSource(this.transactions);
     });
 
-  this.filterDataService.monthYearChange$.subscribe(({ month, year }) => {
-    console.log(`Recebido mês ${month}, ano ${year}`);
-    this.selectedMonth = month;
-    this.selectedYear = year;
-    this.filterTransaction();
-  })  
+    this.filterDataService.monthYearChange$.subscribe(({ month, year }) => {
+      this.selectedMonth = month;
+      this.selectedYear = year;
+      this.filterTransaction();
+    })
   }
 
   private updateDataSource(data: Transaction[]) {
     this.filteredTransactions = data;
     this.dataSource.data = data;
-    console.log(this.filteredTransactions);
   }
 
   ngAfterViewInit(): void {
@@ -95,16 +108,14 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   }
 
   filterTransaction(): void {
-    console.log('Filtrando transações');
-    if(this.selectedMonth !== undefined && this.selectedYear !== undefined){
+    if (this.selectedMonth !== undefined && this.selectedYear !== undefined) {
       this.filteredTransactions = this.filterDataService.filterTransactions(this.transactions, this.selectedMonth, this.selectedYear);
-      console.log(`Transação filtrada: ${JSON.stringify(this.filteredTransactions)}`);;      
     } else {
       this.filteredTransactions = this.transactions
     }
-    this.dataSource.data = this.filteredTransactions;    
+    this.dataSource.data = this.filteredTransactions;
   }
-  
-  
+
+
 
 }
