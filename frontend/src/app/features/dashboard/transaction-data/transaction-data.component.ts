@@ -37,7 +37,6 @@ export class TransactionDataComponent implements OnInit {
     // Inscreve-se nas mudanças de mês e ano
     this.filterDataService.monthYearChange$.subscribe(({ month, year }) => {
       this.filteredTransactions = this.filterDataService.filterTransactions(this.transactions, month, year);
-      console.log('Transações filtradas:', this.filteredTransactions);
     });
   }
 
@@ -60,7 +59,6 @@ export class TransactionDataComponent implements OnInit {
     const dialogRef = this.dialog.open(TransactionInputComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result ${result}`)
     });
   }
 
@@ -68,7 +66,6 @@ export class TransactionDataComponent implements OnInit {
   //   const date = moment(event.value);
   //   this.selectedMonth = date.month();
   //   this.selectedYear = date.year();
-  //   console.log(`Mês selecionado: ${this.selectedMonth}, Ano selecionado: ${this.selectedYear}`);
   //   this.filterDataService.emitMonthYearChange(this.selectedMonth, this.selectedYear);
   // }
 
