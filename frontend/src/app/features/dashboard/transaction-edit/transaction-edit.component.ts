@@ -55,8 +55,6 @@ export class TransactionEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Formulário válido:', this.transactionForm.valid);
-    console.log('Valores do formulário:', this.transactionForm.value);
   
     if (this.transactionForm.valid) {
       const formValues = this.transactionForm.value;
