@@ -13,7 +13,7 @@ export class TransactionBalanceComponent implements OnInit {
   despesa: number = 0;
   saldo: number = 0;
 
-  selectedMonth: number = moment().month() + 1 ;
+  selectedMonth: number = moment().month() + 1;
   selectedYear: number = moment().year();
 
   filteredTransactions: Transaction[] = []; // Lista de transações filtradas
@@ -89,17 +89,17 @@ export class TransactionBalanceComponent implements OnInit {
    * Determina a classe CSS com base no saldo
    */ 
    getBalanceClass(): string {
-    if (this.saldo > 0) return 'saldo'; // Saldo positivo
-    if (this.saldo < 0) return 'despesa'; // Saldo negativo
-    return 'neutro'; // Saldo neutro
+    if (this.saldo > 0) return 'saldo'; 
+    if (this.saldo < 0) return 'despesa'; 
+    return 'neutro'; 
   }
 
   /**
    * Determina a classe do ícone com base no saldo
   */
   getIconClass(): string {
-    if (this.saldo > 0) return 'icon-saldo'; // Ícone positivo
-    if (this.saldo < 0) return 'icon-negative'; // Ícone negativo
-    return 'icon-neutral'; // Ícone neutro
+    if (this.saldo > 0) return 'icon-saldo'; 
+    if (this.saldo < 0) return 'icon-negative'; 
+    return 'icon-neutral'; 
   }
 }

@@ -97,6 +97,11 @@
     <ng-template #noTransactions>
       <div class="no-transactions-message">
         <h1>Nenhuma transação cadastrada até o momento.</h1>
+        <div class="btn-mobile">
+          <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
+            Lista todas as Transações
+          </button>
+        </div>
       </div>
     </ng-template>
 

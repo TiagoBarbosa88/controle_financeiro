@@ -18,7 +18,7 @@ export class FilterDataService {
 
   // evento de mudança de transações filtradas para a LISTA
   private monthYearChangeSource = new BehaviorSubject<{ month: number, year: number }>({
-    month: moment().month() + 1 ,
+    month: moment().month() + 1,
     year: moment().year(),
   });
   monthYearChange$ = this.monthYearChangeSource.asObservable();

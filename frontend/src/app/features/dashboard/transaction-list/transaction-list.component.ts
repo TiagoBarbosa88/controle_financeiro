@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,6 +9,7 @@ import { Category } from 'src/app/shared/models/category.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FilterDataService } from 'src/app/shared/services/filter-data.service';
 import { MenssageriaService } from 'src/app/shared/services/menssageria.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction-list',
@@ -27,6 +28,8 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<Transaction>();
   selectedMonth!: number;
   selectedYear!: number;
+
+  private router = Inject(Router)
 
   displayedColumns: string[] = ['title', 'value', 'type', 'category', 'date', 'actions'];
 
@@ -121,5 +124,8 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   }
 
 
+  navigateToHome(): void {
+    this.router.navigate(['/home'])
+  }
 
 }

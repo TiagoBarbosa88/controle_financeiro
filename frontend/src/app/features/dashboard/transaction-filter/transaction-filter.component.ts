@@ -62,8 +62,8 @@ export class TransactionFilterComponent implements OnInit {
   ngOnInit(): void {
     // Define o mês e ano inicial como o mês atual
     const now = moment();
-    this.selectedMonth = now.month(); // Mês atual (0-11)
-    this.selectedYear = now.year(); // Ano atual
+    this.selectedMonth = now.month(); 
+    this.selectedYear = now.year(); 
 
     this.getTransactions(); // Carrega as transações
 
@@ -101,7 +101,7 @@ export class TransactionFilterComponent implements OnInit {
     ctrlValue.year(normalizedMonthAndYear.year());
     this.date.setValue(ctrlValue);
 
-    this.selectedMonth = ctrlValue.month();
+    this.selectedMonth = ctrlValue.month()+1;
     this.selectedYear = ctrlValue.year();
     this.filterTransactions();
 
