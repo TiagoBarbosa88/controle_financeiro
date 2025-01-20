@@ -17,7 +17,10 @@ export class FilterDataService {
   transactions: Transaction[] = []
 
   // evento de mudança de transações filtradas para a LISTA
-  private monthYearChangeSource = new Subject<{ month: number, year: number }>();
+  private monthYearChangeSource = new BehaviorSubject<{ month: number, year: number }>({
+    month: moment().month() + 1 ,
+    year: moment().year(),
+  });
   monthYearChange$ = this.monthYearChangeSource.asObservable();
 
   emitMonthYearChange(month: number, year: number): void {
@@ -29,7 +32,6 @@ export class FilterDataService {
   filteredTransactions$ = this.filteredTransactionsSource.asObservable();
 
   emitFilteredTransactions(filteredTransactions: Transaction[]): void {
-  //  console.log("filteredTransactions " + filteredTransactions);
     this.filteredTransactionsSource.next(filteredTransactions);
   }
 
@@ -43,43 +45,24 @@ export class FilterDataService {
   }
 
   filterTransactions(transactions: Transaction[], month: number, year: number): Transaction[] {
-    const filtered: Transaction[] = transactions.filter(transaction => {
+    return transactions.filter((transaction) => {
       const transactionDate = moment(transaction.date);
-
-      return transactionDate.month() === month && transactionDate.year() === year;
+      return transactionDate.month() === month - 1 && transactionDate.year() === year; // Ajuste de mês (0-11)
     });
-   console.log('Transações filtradas pelo Service:', filtered);
-    return filtered;
   }
 
 
   calculateTotals(transactions: Transaction[], month: number, year: number): { receita: number, despesa: number, saldo: number } {
-    // console.log('Transactions recebidas:', transactions);
-    // console.log(`Filtrando para o mês: ${month}, ano: ${year}`);
-
-    if (!transactions || transactions.length === 0) {
+    if (!transactions.length) {
       return { receita: 0, despesa: 0, saldo: 0 };
     }
 
     const filteredTransactions = this.filterTransactions(transactions, month, year);
-    // console.log('Transações filtradas:', filteredTransactions);
 
-    if (filteredTransactions.length === 0) {
-      return { receita: 0, despesa: 0, saldo: 0 };
-    }
-
-    const receita = filteredTransactions.filter(t => t.type === 'receita').reduce((acc, t) => acc + t.value, 0);
-    const despesa = filteredTransactions.filter(t => t.type === 'despesa').reduce((acc, t) => acc + t.value, 0);
+    const receita = filteredTransactions.filter((t) => t.type === 'receita').reduce((acc, t) => acc + t.value, 0);
+    const despesa = filteredTransactions.filter((t) => t.type === 'despesa').reduce((acc, t) => acc + t.value, 0);
     const saldo = receita - despesa;
 
-    // console.log(`Filtro ${JSON.stringify(filteredTransactions)}`);
-    // console.log(`Valor de receita do mês ${month}: ${receita}`);
-    // console.log(`Valor de despesa do mês ${month}: ${despesa}`);
-    // console.log(`Valor de saldo do mês ${month}: ${saldo}`);
     return { receita, despesa, saldo };
   }
-
-
-
 }
-
