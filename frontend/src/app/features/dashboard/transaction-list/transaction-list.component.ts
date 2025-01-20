@@ -8,6 +8,7 @@ import { Transaction } from 'src/app/shared/models/transaction.model';
 import { Category } from 'src/app/shared/models/category.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FilterDataService } from 'src/app/shared/services/filter-data.service';
+import { MenssageriaService } from 'src/app/shared/services/menssageria.service';
 
 @Component({
   selector: 'app-transaction-list',
@@ -32,6 +33,7 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   constructor(
     private transactionService: TransactionService,
     private categoriesService: CategoriesService,
+    private msg: MenssageriaService,
     private breakpointObserver: BreakpointObserver,
     private filterDataService: FilterDataService
   ) { }
@@ -51,10 +53,14 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
 
     // Assina o observable para atualizar as transações filtradas
     this.filterDataService.filteredTransactions$.subscribe(filteredTransactions => {
-      if (filteredTransactions) {
+      if (filteredTransactions && filteredTransactions.length > 0) {
         this.updateDataSource(filteredTransactions);
+      } else {
+        // Se não houver transações, exibe uma mensagem de erro ou similar
+        this.updateDataSource([]); // Ou outra ação apropriada
       }
     });
+    
   }
 
   private getCategories() {
@@ -69,8 +75,6 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
         ...transaction,
         category_name: this.getCategoryName(transaction.categoryId) // Adiciona o nome da categoria
       }));
-
-     
 
       // Aplica o filtro inicial com base no mês e ano atual
       this.filterTransaction();
@@ -101,7 +105,7 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
 
   public deleteTransaction(id: string) {
     this.transactionService.deleteTransaction(id.toString()).subscribe(() => {
-      this.transactionService.showMessage('Item removido com sucesso!');
+      this.msg.showMessage('Item removido com sucesso!');
       const updatedTransactions = this.transactions.filter(transaction => transaction.id !== id);
       this.updateDataSource(updatedTransactions);
     });

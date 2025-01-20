@@ -54,7 +54,7 @@ export class TransactionDataComponent implements OnInit {
     });
   }
 
-  // Método para abrir o diálogo de entrada de transação
+  // Método para abrir o diálogo de receita de transação
   openDialog() {
     const dialogRef = this.dialog.open(TransactionInputComponent);
 

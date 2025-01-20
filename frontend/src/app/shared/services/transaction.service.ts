@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from '../models/transaction.model';
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,18 +16,11 @@ export class TransactionService {
 
 
   constructor(
-    private snackBar: MatSnackBar,
+    
     private http: HttpClient
   ) { }
 
-  showMessage(msg: string, isError: boolean = false): void {
-    this.snackBar.open(msg, "X", {
-      duration: 3000,
-      horizontalPosition: "right",
-      verticalPosition: "top",
-      panelClass: isError ? "msg-error" : "msg-success",
-    });
-  }
+ 
 
   getTransactions(): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(this.transactionsApi);
