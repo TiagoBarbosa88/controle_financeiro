@@ -8,7 +8,7 @@
           <!-- title Column -->
           <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
-            <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.title | titlecase }}</td>
           </ng-container>
 
           <!-- Value Column -->
