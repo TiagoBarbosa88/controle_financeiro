@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import moment from 'moment';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { FilterDataService } from 'src/app/shared/services/filter-data.service';
+import { TransactionService } from 'src/app/shared/services/transaction.service';
 
 @Component({
   selector: 'app-transaction-balance',
@@ -20,6 +21,7 @@ export class TransactionBalanceComponent implements OnInit {
 
   constructor(
     private filterDateService: FilterDataService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit(): void {
@@ -29,12 +31,18 @@ export class TransactionBalanceComponent implements OnInit {
       this.initializeTransactions(); // Atualiza as transações sempre que o mês/ano mudar
     });
 
+    this.transactionService.transactions$.subscribe(transactions => {
+      console.log('Transações recebidas no TransactionBalanceComponent:', transactions);
+      this.filteredTransactions = this.filterTransactions(transactions);
+      this.updateTotals();
+    });
+
     this.initializeTransactions(); // Inicializa as transações ao carregar o componente
   } 
 
   /**
-     * Inicializa as transações e atualiza os totais
-  **/
+   * Inicializa as transações e atualiza os totais
+   **/
   private currentMonth: number | null = null;
   private currentYear: number | null = null;
   
@@ -44,9 +52,9 @@ export class TransactionBalanceComponent implements OnInit {
       this.currentMonth = this.selectedMonth;
       this.currentYear = this.selectedYear;
 
-
-      this.filterDateService.getTransactions().subscribe({
+      this.transactionService.getTransactions().subscribe({
         next: (transactions: Transaction[]) => {
+          console.log('Transações recebidas na inicialização:', transactions);
           this.filteredTransactions = this.filterTransactions(transactions);
           this.updateTotals();
         },
@@ -54,28 +62,39 @@ export class TransactionBalanceComponent implements OnInit {
           console.error('Erro ao carregar transações:', error);
         },
       });
-    } else {
     }
   }
-  
 
- 
   private filterTransactions(transactions: Transaction[]): Transaction[] {
-    return this.filterDateService.filterTransactions(transactions, this.selectedMonth, this.selectedYear);
+    console.log('Filtrando transações:', transactions);
+    const filtered = this.filterDateService.filterTransactions(transactions, this.selectedMonth, this.selectedYear);
+    console.log('Transações após filtro:', filtered);
+    return filtered;
   }
 
   /**
    * Atualiza os totais (receita, despesa, saldo) com base nas transações filtradas
    **/
   private updateTotals(): void {
-    const { receita, despesa, saldo } = this.filterDateService.calculateTotals(
-      this.filteredTransactions,
-      this.selectedMonth,
-      this.selectedYear
-    );
-    this.receita = receita;
-    this.despesa = despesa;
-    this.saldo = saldo;
+    this.receita = 0;
+    this.despesa = 0;
+    this.saldo = 0;
+
+    this.filteredTransactions.forEach(transaction => {
+      if (transaction.type === 'receita') {
+        this.receita += transaction.value;
+      } else if (transaction.type === 'despesa') {
+        this.despesa += transaction.value;
+      }
+    });
+
+    this.saldo = this.receita - this.despesa;
+
+    console.log('Totais atualizados:', {
+      receita: this.receita,
+      despesa: this.despesa,
+      saldo: this.saldo
+    });
   }
 
   // Função para atualizar mês e ano selecionados
@@ -85,10 +104,10 @@ export class TransactionBalanceComponent implements OnInit {
     this.filterDateService.emitMonthYearChange(month, year);
   }
 
-/**
+  /**
    * Determina a classe CSS com base no saldo
    */ 
-   getBalanceClass(): string {
+  getBalanceClass(): string {
     if (this.saldo > 0) return 'saldo'; 
     if (this.saldo < 0) return 'despesa'; 
     return 'neutro'; 
@@ -96,7 +115,7 @@ export class TransactionBalanceComponent implements OnInit {
 
   /**
    * Determina a classe do ícone com base no saldo
-  */
+   */
   getIconClass(): string {
     if (this.saldo > 0) return 'icon-saldo'; 
     if (this.saldo < 0) return 'icon-negative'; 

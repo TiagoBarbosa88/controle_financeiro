@@ -29,7 +29,6 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   selectedMonth!: number;
   selectedYear!: number;
 
-  private router = Inject(Router)
 
   displayedColumns: string[] = ['title', 'value', 'type', 'category', 'date', 'actions'];
 
@@ -38,67 +37,64 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
     private categoriesService: CategoriesService,
     private msg: MenssageriaService,
     private breakpointObserver: BreakpointObserver,
-    private filterDataService: FilterDataService
+    private filterDataService: FilterDataService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    // Defina o mês e ano iniciais com base na data atual
     const currentDate = new Date();
-    this.selectedMonth = currentDate.getMonth(); // Mês atual (0-11)
-    this.selectedYear = currentDate.getFullYear(); // Ano atual
-    
-    this.getTransactions();
-    this.getCategories();
+    this.selectedMonth = currentDate.getMonth() + 1; 
+    this.selectedYear = currentDate.getFullYear(); 
+
+  // Defina manualmente para testar
+    // this.selectedMonth = 12; 
+    // this.selectedYear = 2024;
+
+    this.loadInitialData();
 
     this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
       this.isWeb = !result.matches;
+      this.cdr.markForCheck();
     });
 
-    // Assina o observable para atualizar as transações filtradas
     this.filterDataService.filteredTransactions$.subscribe(filteredTransactions => {
-      if (filteredTransactions && filteredTransactions.length > 0) {
-        this.updateDataSource(filteredTransactions);
-      } else {
-        // Se não houver transações, exibe uma mensagem de erro ou similar
-        this.updateDataSource([]); // Ou outra ação apropriada
-      }
+      this.updateDataSource(filteredTransactions);
     });
-    
+  }
+
+  private loadInitialData() {
+    this.getCategories();
+    this.transactionService.transactions$.subscribe(transactions => {
+      this.transactions = transactions.map(transaction => ({
+        ...transaction,
+        category_name: this.getCategoryName(transaction.categoryId) // Adiciona o nome da categoria
+      }));
+      this.filterTransaction();
+      this.cdr.markForCheck(); // Marcar para verificação de mudanças
+    });
+    this.transactionService.getTransactions().subscribe();
   }
 
   private getCategories() {
     this.categoriesService.getCategories().subscribe(categories => {
       this.categories = categories;
+      this.cdr.markForCheck(); // Marcar para verificação de mudanças
     });
-  }
-
-  private getTransactions() {
-    this.transactionService.getTransactions().subscribe(transactions => {
-      this.transactions = transactions.map(transaction => ({
-        ...transaction,
-        category_name: this.getCategoryName(transaction.categoryId) // Adiciona o nome da categoria
-      }));
-
-      // Aplica o filtro inicial com base no mês e ano atual
-      this.filterTransaction();
-      // this.updateDataSource(this.transactions);
-    });
-
-    this.filterDataService.monthYearChange$.subscribe(({ month, year }) => {
-      this.selectedMonth = month;
-      this.selectedYear = year;
-      this.filterTransaction();
-    })
   }
 
   private updateDataSource(data: Transaction[]) {
     this.filteredTransactions = data;
     this.dataSource.data = data;
+    this.dataSource._updateChangeSubscription(); // Força a atualização do dataSource
+    console.log('DataSource após atualização:', this.dataSource.data);
+    this.cdr.markForCheck(); // Marca para verificação de mudanças
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.cdr.markForCheck(); // Marcar para verificação de mudanças
   }
 
   getCategoryName(categoryId: number | string): string {
@@ -111,21 +107,31 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
       this.msg.showMessage('Item removido com sucesso!');
       const updatedTransactions = this.transactions.filter(transaction => transaction.id !== id);
       this.updateDataSource(updatedTransactions);
+      this.cdr.markForCheck(); // Marcar para verificação de mudanças
     });
   }
 
   filterTransaction(): void {
+    console.log('selectedMonth:', this.selectedMonth, 'selectedYear:', this.selectedYear);
+  
     if (this.selectedMonth !== undefined && this.selectedYear !== undefined) {
-      this.filteredTransactions = this.filterDataService.filterTransactions(this.transactions, this.selectedMonth, this.selectedYear);
+      this.filteredTransactions = this.transactions.filter(transaction => {
+        const transactionDate = new Date(transaction.date); // Converte a string para Date
+        const transactionMonth = transactionDate.getMonth() + 1; // Mês (1-12)
+        const transactionYear = transactionDate.getFullYear();
+  
+        return transactionMonth === this.selectedMonth && transactionYear === this.selectedYear;
+      });
+  
+      console.log('Transações após filtro:', this.filteredTransactions);
     } else {
-      this.filteredTransactions = this.transactions
+      this.filteredTransactions = this.transactions;
     }
-    this.dataSource.data = this.filteredTransactions;
+  
+    this.updateDataSource(this.filteredTransactions);
   }
-
 
   navigateToHome(): void {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home']);
   }
-
 }
