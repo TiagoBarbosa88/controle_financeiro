@@ -27,18 +27,36 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   selectedMonth!: number;
   selectedYear!: number;
 
+
+  private router = Inject(Router);
+
   displayedColumns: string[] = ['title', 'value', 'type', 'category', 'date', 'actions'];
 
   constructor(
     private transactionService: TransactionService,
     private categoriesService: CategoriesService,
     private breakpointObserver: BreakpointObserver,
+    private filterDataService: FilterDataService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+    private cdr: ChangeDetectorRef
+  ) { }
+
+  ngOnInit(): void {
+    const currentDate = new Date();
+    this.selectedMonth = currentDate.getMonth() + 1; 
+    this.selectedYear = currentDate.getFullYear(); 
+
+
+    this.loadInitialData();
+
     private filterDataService: FilterDataService
   ) { }
 
   ngOnInit(): void {
     this.getTransactions();
     this.getCategories();
+
 
     this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
       this.isWeb = !result.matches;
