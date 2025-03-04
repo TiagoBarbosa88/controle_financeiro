@@ -29,6 +29,10 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
   selectedMonth!: number;
   selectedYear!: number;
 
+<<<<<<< HEAD
+=======
+  private router = Inject(Router);
+>>>>>>> 775f474961309a3c53131109812346ece8be022e
 
   displayedColumns: string[] = ['title', 'value', 'type', 'category', 'date', 'actions'];
 
@@ -38,8 +42,12 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
     private msg: MenssageriaService,
     private breakpointObserver: BreakpointObserver,
     private filterDataService: FilterDataService,
+<<<<<<< HEAD
     private cdr: ChangeDetectorRef,
     private router: Router
+=======
+    private cdr: ChangeDetectorRef
+>>>>>>> 775f474961309a3c53131109812346ece8be022e
   ) { }
 
   ngOnInit(): void {
@@ -47,9 +55,15 @@ export class TransactionListComponent implements AfterViewInit, OnInit {
     this.selectedMonth = currentDate.getMonth() + 1; 
     this.selectedYear = currentDate.getFullYear(); 
 
+<<<<<<< HEAD
   // Defina manualmente para testar
     // this.selectedMonth = 12; 
     // this.selectedYear = 2024;
+=======
+    // Defina manualmente para testar
+  // this.selectedMonth = 12; 
+  // this.selectedYear = 2024;
+>>>>>>> 775f474961309a3c53131109812346ece8be022e
 
     this.loadInitialData();
 
