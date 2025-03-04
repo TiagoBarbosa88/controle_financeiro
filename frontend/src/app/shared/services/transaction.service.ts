@@ -9,11 +9,6 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class TransactionService {
 
-  private transactionsApi = environment.transactionUrl;
-  private transactionsSubject = new BehaviorSubject<Transaction[]>([]);  
-  transactions$ = this.transactionsSubject.asObservable();
-
-
   private transactionsApi = 'http://localhost:3001/transactions';
 
   transactions: Transaction[] = [];
