@@ -21,12 +21,10 @@ export class HomeComponent {
   };
 
   onLogin() {
-    console.log('Login:', this.loginData);
     // Adicione lógica para autenticação
   }
 
   onRegister() {
-    console.log('Cadastro:', this.registerData);
     // Adicione lógica para registro
   }
 }
