@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/shared/models/category.model';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { MenssageriaService } from 'src/app/shared/services/menssageria.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class TransactionEditComponent implements OnInit {
   constructor(
     private transactionService: TransactionService,
     private categoriesService: CategoriesService,
-    private msg: MenssageriaService,
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder
@@ -57,6 +55,8 @@ export class TransactionEditComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('Formulário válido:', this.transactionForm.valid);
+    console.log('Valores do formulário:', this.transactionForm.value);
   
     if (this.transactionForm.valid) {
       const formValues = this.transactionForm.value;
@@ -64,7 +64,7 @@ export class TransactionEditComponent implements OnInit {
       const selectedCategory = this.categories.find(cat => cat.id === formValues.category);
   
       if (!selectedCategory) {
-        this.msg.showMessage('Categoria inválida');
+        this.transactionService.showMessage('Categoria inválida');
         return;
       }
   
@@ -75,19 +75,15 @@ export class TransactionEditComponent implements OnInit {
         value: formValues.value,
         type: formValues.type,
         categoryId: selectedCategory.id,
-        category: {
-          id: selectedCategory.id,
-          categoryName: selectedCategory.category_name // Atualizar com o nome da categoria
-        },
-        styleClass: formValues.type === 'receita' ? 'receita' : 'despesa'    
+        category_name: selectedCategory.category_name     
       };
   
       this.transactionService.updateTransaction(newTransaction).subscribe(() => {
-        this.msg.showMessage('Transação atualizada com sucesso!');
+        this.transactionService.showMessage('Transação atualizada com sucesso!');
         this.router.navigate(['/']);
       });
     } else {
-      this.msg.showMessage('Formulário inválido, revise os dados!');
+      this.transactionService.showMessage('Formulário inválido, revise os dados!');
     }
   }
   

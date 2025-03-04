@@ -26,16 +26,16 @@ export class OperationsService {
   getTransactions(): void {
     this.transactionService.getTransactions().subscribe(transactions => {
       this.transactions = transactions;
-      this.calculateTotal();
+      this.calculateTotal(transactions);
     })
   }
 
-  calculateTotal(): void {
-    const totalReceitas = this.transactions
+  calculateTotal(transactions: Transaction[]): void {
+    const totalReceitas = transactions
       .filter(transactions => transactions.type === 'receita')
       .reduce((sun, transction) => sun + transction.value, 0)
     
-    const totalDespesas = this.transactions
+    const totalDespesas = transactions
       .filter(transactions => transactions.type === 'despesa')
       .reduce((sun, transactions) => sun + transactions.value, 0)
 
@@ -49,7 +49,7 @@ export class OperationsService {
 
   refreshTotals(): void {
     this.transactionService.getTransactions().subscribe((transactions) => {
-      this.calculateTotal();
+      this.calculateTotal(transactions);
     });
   }
 

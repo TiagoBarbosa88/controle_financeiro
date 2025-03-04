@@ -24,20 +24,11 @@
       </mat-select>
     </mat-form-field>
     
-    <!-- <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item categoria">
-      <mat-label>Categoria</mat-label>
-      <mat-select formControlName="category">
-        <mat-option *ngFor="let category of categories" [value]="category.id">
-          {{ category.category_name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
-
     <mat-form-field appearance="outline" hideRequiredMarker="true" class="flex-item categoria">
       <mat-label>Categoria</mat-label>
       <mat-select formControlName="category">
         <mat-option *ngFor="let category of categories" [value]="category.id">
-          {{ category.category_name || category.categoryName }}
+          {{ category.category_name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
