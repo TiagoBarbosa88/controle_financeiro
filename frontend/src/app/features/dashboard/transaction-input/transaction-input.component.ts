@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Category } from 'src/app/shared/models/category.model';
 import { Transaction } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { MenssageriaService } from 'src/app/shared/services/menssageria.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class TransactionInputComponent implements OnInit {
     private fb: FormBuilder,
     private transactionService: TransactionService,
     private categoryService: CategoriesService,
-    private msg: MenssageriaService,
     private breakpointObserver: BreakpointObserver,
     private router: Router
   ) {
@@ -61,7 +59,7 @@ export class TransactionInputComponent implements OnInit {
       const selectedCategory = this.categories.find(cat => cat.id === formValues.category);
 
       if (!selectedCategory) {
-        this.msg.showMessage('Categoria inválida');
+        this.transactionService.showMessage('Categoria inválida');
         return;
       }
 
@@ -72,20 +70,17 @@ export class TransactionInputComponent implements OnInit {
         value: formValues.value,
         type: formValues.type,
         categoryId: selectedCategory.id,
-        category: {
-          id: selectedCategory.id,
-          categoryName: selectedCategory.category_name // Atualizar com o nome da categoria
-        },
+        category_name: selectedCategory.category_name,
         styleClass: formValues.type === 'receita' ? 'receita' : 'despesa'
       };
 
       // Enviar a transação para o serviço
       this.transactionService.createTransaction(newTransaction).subscribe(() => {
-        this.msg.showMessage('Transação criada com sucesso!');
+        this.transactionService.showMessage('Transação criada com sucesso!');
         location.reload();
       });
     } else {
-      this.msg.showMessage('Por favor, preencha todos os campos corretamente.');
+      this.transactionService.showMessage('Por favor, preencha todos os campos corretamente.');
     }
   }
 

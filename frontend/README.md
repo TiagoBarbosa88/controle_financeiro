@@ -48,7 +48,7 @@ src/
 │   │   │   ├── services/   # Serviços específicos do dashboard
 │   │   │   ├── models/     # Modelos de dados específicos
 │   │   │   └── dashboard.module.ts
-│   │   ├── transactions/   # Módulo para receitas/saídas
+│   │   ├── transactions/   # Módulo para entradas/saídas
 │   │   │   ├── components/
 │   │   │   ├── services/
 │   │   │   ├── models/
