@@ -6,7 +6,6 @@ import { TransactionInputComponent } from './features/dashboard/transaction-inpu
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'home', component: DashboardComponent },
   { path: 'transaction/edit/:id', component: TransactionEditComponent },
   { path: 'transaction/add', component: TransactionInputComponent },
   

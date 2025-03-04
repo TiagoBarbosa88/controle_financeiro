@@ -25,7 +25,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { TransactionListComponent } from './features/dashboard/transaction-list/transaction-list.component';
 import { TransactionEditComponent } from './features/dashboard/transaction-edit/transaction-edit.component';
 import { TransactionDataComponent } from './features/dashboard/transaction-data/transaction-data.component';
-import { TransactionFilterComponent } from './features/dashboard/transaction-filter/transaction-filter.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -40,7 +39,6 @@ registerLocaleData(localePt);
     TransactionListComponent,
     TransactionEditComponent,
     TransactionDataComponent,
-    TransactionFilterComponent,
   ],
   imports: [
     BrowserModule,
